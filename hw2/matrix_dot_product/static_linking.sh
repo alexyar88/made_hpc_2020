@@ -1,5 +1,5 @@
 #!/bin/zsh
-# На маке пришлось g++ использовать
+# На маке пришлось использовать zsh и g++
 g++ -c matrix.cpp
 g++ -c vector_col.cpp
 g++ -c vector_row.cpp
