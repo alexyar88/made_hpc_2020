@@ -4,5 +4,5 @@
 /build
 *.o
 *.a
-*.bin
+matmul
 CMakeLists.txt
