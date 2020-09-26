@@ -25,7 +25,6 @@ public:
     size_t cols;
 
 private:
-    int default_val = 1;
     std::vector<int> arr;
 };
 
