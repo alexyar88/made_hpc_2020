@@ -10,11 +10,11 @@ Matrix::Matrix(size_t rows_num, size_t cols_num) {
 }
 
 
-int Matrix::Get(size_t row, size_t col) const {
+double Matrix::Get(size_t row, size_t col) const {
     return arr[row * cols + col];
 };
 
-void Matrix::Set(size_t row, size_t col, int val) {
+void Matrix::Set(size_t row, size_t col, double val) {
     arr[row * cols + col] = val;
 }
 
@@ -33,7 +33,7 @@ Matrix Matrix::operator+(const Matrix &m) const {
     Matrix m_r = Matrix(rows, cols);
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < rows; ++j) {
-            int val = Get(i, j) + m.Get(i, j);
+            double val = Get(i, j) + m.Get(i, j);
             m_r.Set(i, j, val);
         }
     }
@@ -45,11 +45,11 @@ Matrix Matrix::operator-(const Matrix &m) const {
     return *this + m*(-1);
 }
 
-Matrix Matrix::operator*(int num) const {
+Matrix Matrix::operator*(double num) const {
     Matrix m = Matrix(rows, cols);
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            int val = Get(i, j) * num;
+            double val = Get(i, j) * num;
             m.Set(i, j, val);
         }
     }

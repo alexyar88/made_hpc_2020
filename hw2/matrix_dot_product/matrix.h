@@ -10,9 +10,9 @@ class Matrix {
 public:
     Matrix(size_t rows_num, size_t cols_num);
 
-    int Get(size_t row, size_t col) const;
+    double Get(size_t row, size_t col) const;
 
-    void Set(size_t row, size_t col, int val);
+    void Set(size_t row, size_t col, double val);
 
     void Print();
 
@@ -20,13 +20,12 @@ public:
 
     Matrix operator-(const Matrix &m) const;
 
-    Matrix operator*(int num) const;
+    Matrix operator*(double num) const;
 
     size_t rows;
     size_t cols;
+    std::vector<double> arr;
 
-private:
-    std::vector<int> arr;
 };
 
 

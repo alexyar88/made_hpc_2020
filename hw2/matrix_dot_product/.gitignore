@@ -6,4 +6,3 @@
 *.a
 *.log
 matmul
-CMakeLists.txt
