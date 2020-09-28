@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-for flag in 'flag_O3' 'flag_g'
+for flag in '-O3' '-g'
 do
-  make $flag
-  for n in 4096
+  make FLAG=$flag
+  for n in 512
   do
     ./matmul $n
     ./matmul $n strassen

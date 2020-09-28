@@ -1,35 +1,20 @@
+CC=g++
+CFLAGS=-c
+SOURCES=matrix.cpp vector_col.cpp vector_row.cpp dot_product.cpp dot_product_strassen.cpp
+MAIN=main.cpp
+OBJECTS=$(SOURCES:.cpp=.o)
+STATIC_LIB=matrix_lib.a
+EXECUTABLE=matmul
+STD=c++17
+
 all:
-	g++ -c matrix.cpp
-	g++ -c vector_col.cpp
-	g++ -c vector_row.cpp
-	g++ -c dot_product.cpp
-	g++ -c dot_product_strassen.cpp
-	ar rc matrix_lib.a matrix.o vector_col.o vector_row.o dot_product.o dot_product_strassen.o
-	g++ -std=c++17 main.cpp matrix_lib.a -o matmul
-	rm *.o *.a
-
-flag_O3:
-	g++ -c matrix.cpp -O3
-	g++ -c vector_col.cpp -O3
-	g++ -c vector_row.cpp -O3
-	g++ -c dot_product.cpp -O3
-	g++ -c dot_product_strassen.cpp -O3
-	ar rc matrix_lib.a matrix.o vector_col.o vector_row.o dot_product.o dot_product_strassen.o
-	g++ -std=c++17 main.cpp matrix_lib.a -o matmul
-	rm *.o *.a
-
-flag_g:
-	g++ -c matrix.cpp -g
-	g++ -c vector_col.cpp -g
-	g++ -c vector_row.cpp -g
-	g++ -c dot_product.cpp -g
-	g++ -c dot_product_strassen.cpp -g
-	ar rc matrix_lib.a matrix.o vector_col.o vector_row.o dot_product.o dot_product_strassen.o
-	g++ -std=c++17 main.cpp matrix_lib.a -o matmul
+	$(CC) $(CFLAGS) $(SOURCES) $(FLAG)
+	ar rc $(STATIC_LIB) $(OBJECTS)
+	g++ -std=$(STD) $(MAIN) $(STATIC_LIB) -o $(EXECUTABLE)
 	rm *.o *.a
 
 clean:
-	rm -f *.o *.a matmul
-run:
-	./matmul
+	rm -rf *.o $(EXECUTABLE)
 
+run:
+	./$(EXECUTABLE)
