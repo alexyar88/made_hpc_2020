@@ -18,7 +18,10 @@ double *solve_gauss_seidel(const double *A, const double *b, int N, double eps) 
         for (i = 0; i < N; i++) {
             prev[i] = x[i];
         }
-#pragma omp parallel for private(i, j, x_i, temp) shared(A, b, N, x, prev) default(none)
+#pragma omp parallel for \
+    private(i, j, x_i, temp) \
+    shared(A, b, N, x, prev) \
+    default(none)
         for (i = 0; i < N; i++) {
             temp = 0;
 
@@ -35,7 +38,11 @@ double *solve_gauss_seidel(const double *A, const double *b, int N, double eps) 
             x[i] = (b[i] - temp) / A[i * N + i];
         }
         norm2 = 0;
-#pragma omp parallel for private(i) shared(prev, x, N) default(none) reduction(+:norm2)
+#pragma omp parallel for \
+    private(i) \
+    shared(prev, x, N) \
+    default(none) \
+    reduction(+:norm2)
         for (i = 0; i < N; i++) {
             norm2 += (prev[i] - x[i]) * (prev[i] - x[i]);
         }
