@@ -2,7 +2,24 @@
 #include <stdlib.h>
 #include "omp.h"
 
-void matmul(const double *A, const double *B, double *C, int N) {
+int SEED = 123;
+
+void random_graph(int *A, int N) {
+    srand(SEED);
+    int i, j;
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < N; j++) {
+            A[i * N + j] = A[i * N + j];
+            if (i == j) {
+                A[i * N + j] = 0;
+            } else {
+                A[i * N + j] = rand() & 1;
+            }
+        }
+    }
+}
+
+void matmul(const int *A, const int *B, int *C, int N) {
     int i, j, k, temp_index;
 
     for (i = 0; i < N * N; i++) {
@@ -26,10 +43,10 @@ void matmul(const double *A, const double *B, double *C, int N) {
 //    }
 }
 
-void power(const double *A, double *C, int p, int N) {
+void power(const int *A, int *C, int p, int N) {
     int i, j;
-    double *B = malloc(N * N * sizeof(double));
-    double *D = malloc(N * N * sizeof(double));
+    int *B = malloc(N * N * sizeof(int));
+    int *D = malloc(N * N * sizeof(int));
     for (i = 0; i < N; i++) {
         for (j = 0; j < N; j++) {
             B[i * N + j] = A[i * N + j];
@@ -62,22 +79,20 @@ void power(const double *A, double *C, int p, int N) {
 
 
 int main() {
-    int N = 1000;
-    double *A = malloc(N * N * sizeof(double));
-    double *C = malloc(N * N * sizeof(double));
+    int N = 512;
+    int *A = malloc(N * N * sizeof(int));
+    int *C = malloc(N * N * sizeof(int));
 
     for (int i = 0; i < N * N; i++) {
-        A[i] = 1 + i;
         C[i] = 0;
     }
+    random_graph(A, N);
+
     double start = omp_get_wtime();
     power(A, C, 7, N);
     double end = omp_get_wtime();
     printf("Time = %f \n", end - start);
 
-//    for (int i = 0; i < N * N; i++) {
-//        printf("%f \t", C[i]);
-//    }
     free(A);
     free(C);
     return 0;
