@@ -1,0 +1,5 @@
+[requires]
+openblas/0.3.10:ce6386edef6c7a9312d41d6722d0ec105fdf090f
+
+[generators]
+cmake
