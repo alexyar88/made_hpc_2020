@@ -112,6 +112,7 @@ int main() {
     }
 
     free(rank);
+    free(rank_naive);
     free(G);
 
     return 0;
