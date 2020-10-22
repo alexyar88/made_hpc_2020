@@ -9,6 +9,5 @@
     - Картинка эволюции для одного правила - **done**, правило = фнукция, достаточно просто написать функцию под правило
     - График ускорения работы программы от кол-ва процессов - т.к. параллелил на 2 процесса, не думаю, что это актуально
     - Картинка эволюции для одного правила - **done**.  
-![Картинка эволюции для одного правила](https://raw.githubusercontent.com/alexyar88/made_hpc_2020/master/hw5/2_cellular_automata/cellular_automata_parallel.bmp?token=AALS5M72SDYHY33EFZBUVOS7SGDEW)
-    
+![Картинка эволюции для одного правила](https://raw.githubusercontent.com/alexyar88/made_hpc_2020/master/hw5/2_cellular_automata/cellular_automata_parallel.bmp?token=AALS5MYA4I5TNM6LCDVEX2S7SGD6Y)    
   
