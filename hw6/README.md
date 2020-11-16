@@ -26,3 +26,7 @@
 Кернел 5х5   
 
 ![Оригинал](https://github.com/alexyar88/made_hpc_2020/blob/master/hw6/median_filter/dog_median_filter_5.jpg) 
+
+## 3. Histogram
+
+В код jupyter notebook в этой папке.
